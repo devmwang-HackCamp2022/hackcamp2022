@@ -2,14 +2,14 @@ import type {NextApiRequest, NextApiResponse} from "next";
 
 type Data = {
     status: string
-    makes: (string | null)[]
+    makes: string[] | null
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     if (!req.complete) return;
     // Expecting req.query to contain key-pair {"year": "number"}
     if (!req.query["year"]) {
-        res.status(400).json({"status": "Missing year query parameter", "makes": []});
+        res.status(400).json({"status": "Missing year query parameter", "makes": null});
         return;
     }
 

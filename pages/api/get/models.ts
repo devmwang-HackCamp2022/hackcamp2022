@@ -2,18 +2,18 @@ import type {NextApiRequest, NextApiResponse} from "next";
 
 type Data = {
     status: string
-    models: (string | null)[]
+    models: string[] | null
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     if (!req.complete) return;
     // expecting req.query to contain key-pair {"year": "number", "make": "string"}
     if (!req.query["year"]) {
-        res.status(400).json({"status": "Missing year query parameter", "models": []});
+        res.status(400).json({"status": "Missing year query parameter", "models": null});
         return;
     }
     if (!req.query["make"]) {
-        res.status(400).json({"status": "Missing make query parameter", "models": []});
+        res.status(400).json({"status": "Missing make query parameter", "models": null});
         return;
     }
 
@@ -23,7 +23,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
         .then(response => response.json())
         .then(data => {
             if (!data.makes.includes(req.query["make"])) {
-                res.status(400).json({"status": "Invalid make for provided year", "models": []});
+                res.status(400).json({"status": "Invalid make for provided year", "models": null});
                 return;
             }
         }
