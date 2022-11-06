@@ -26,8 +26,8 @@ export default function CO2Calculator({
         kmDriven: "",
     });
 
-    const [kmErrorState, setKmErrorState] = useState(false);
-    const [kWhErrorState, setKWhErrorState] = useState(false);
+    const [electricalEmissions, setElectricalEmissions] = useState(0);
+    const [vehicleEmissions, setVehicleEmissions] = useState(0);
 
     return (
         <>
@@ -44,9 +44,9 @@ export default function CO2Calculator({
                             });
 
                             if (isNumber(e.target.value)) {
-                                setKWhErrorState(false);
-                            } else {
-                                setKWhErrorState(true);
+                                setElectricalEmissions(
+                                    convertToNumber(e.target.value) * kgPerkWh
+                                );
                             }
                         }}
                     ></input>
@@ -54,8 +54,8 @@ export default function CO2Calculator({
                 <div className="inline-block float-right align-middle">
                     {isNumber(form.kWhUsed) && (
                         <h1 className="text-2xl">
-                            {convertToNumber(form.kWhUsed) * kgPerkWh} Kilograms
-                            of CO
+                            {parseFloat(electricalEmissions.toFixed(4))} kg of
+                            CO
                             <sub>2</sub>
                         </h1>
                     )}
@@ -79,9 +79,9 @@ export default function CO2Calculator({
                             });
 
                             if (isNumber(e.target.value)) {
-                                setKmErrorState(false);
-                            } else {
-                                setKmErrorState(true);
+                                setVehicleEmissions(
+                                    convertToNumber(e.target.value) * kgPerKm
+                                );
                             }
                         }}
                     ></input>
@@ -89,14 +89,38 @@ export default function CO2Calculator({
                 <div className="inline-block float-right align-middle">
                     {isNumber(form.kmDriven) && (
                         <h1 className="text-2xl">
-                            {convertToNumber(form.kmDriven) * kgPerKm} Kilograms
-                            of CO
+                            {parseFloat(vehicleEmissions.toFixed(4))} kg of CO
                             <sub>2</sub>
                         </h1>
                     )}
                     {!isNumber(form.kmDriven) && (
                         <h1 className="text-2xl text-red-500">
                             Value must be a number.
+                        </h1>
+                    )}
+                </div>
+            </div>
+            <div className="py-2 text-white">
+                <div className="inline-block">
+                    <h1 className="text-xl">
+                        Total CO<sub>2</sub> Emissions
+                    </h1>
+                </div>
+                <div className="inline-block float-right align-middle">
+                    {isNumber(form.kmDriven) && (
+                        <h1 className="text-2xl">
+                            {parseFloat(
+                                (
+                                    electricalEmissions + vehicleEmissions
+                                ).toFixed(4)
+                            )}{" "}
+                            kg of CO
+                            <sub>2</sub>
+                        </h1>
+                    )}
+                    {!isNumber(form.kmDriven) && (
+                        <h1 className="text-2xl text-red-500">
+                            Check that entered values are valid.
                         </h1>
                     )}
                 </div>
