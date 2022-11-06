@@ -8,8 +8,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'background': '##0B0B0C',
-      }
+        white: "#FFFEFD",
+        bright: "#C9C5BD",
+        accent: "#00C3D8",
+        gray: "#545454",
+        dark: "#303030",
+        background: "#0B0B0C",
+      },
     },
   },
   plugins: [],
