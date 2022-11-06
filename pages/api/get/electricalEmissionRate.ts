@@ -5,10 +5,7 @@ type Data = {
     kgCO2PerKWh: number | null;
 };
 
-export default function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<Data>
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     if (!req.complete) return;
     // expecting req.query to contain key-pair {"region": "string"}
     if (!req.query["region"]) {
