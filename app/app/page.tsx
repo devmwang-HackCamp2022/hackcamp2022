@@ -21,7 +21,7 @@ async function getKilogramPerKilometer(vehicleId: String) {
 }
 
 export default async function App() {
-    const kilogramPerKilowattHour = 0; //await getKilogramPerKilowattHour("BC");
+    const kilogramPerKilowattHour = await getKilogramPerKilowattHour("CA-BC");
     const kilogramPerKilometer = await getKilogramPerKilometer("37221");
 
     return (
