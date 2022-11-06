@@ -13,7 +13,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
     })
         .then(response => response.json())
         .then(data => {
-            res.status(200).json({"status": "Success", "validRegions": data})
+            // map to name:id pairs
+            res.status(200).json({"status": "Success", "validRegions": data.results.map((region: {name: string, id: string}) => ({[region.name]: region.id}))})
         }
     );
 }
