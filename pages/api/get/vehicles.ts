@@ -50,13 +50,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
     })
         .then(response => response.json())
         .then(data => {
-            let returnable = [data.menuItem];
-            try {
-                let x = data.menuItem[1]
-            } catch (e) {
-                returnable = data.menuItem;
+            if (data.menuItem instanceof Array) {
+                res.status(200).json({"status": "Success", "vehicles": data.menuItem});
+                return;
+            } else {
+                res.status(200).json({"status": "Success", "vehicles": [data.menuItem]});
             }
-            res.status(200).json({"status": "Success", "vehicles": returnable});
         }
     );
 }
