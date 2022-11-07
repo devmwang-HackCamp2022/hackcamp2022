@@ -51,6 +51,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
                             res.status(400).json({status: "Invalid region", kgCO2PerKWh: null});
                             return;
                         }
+                        if (data.error) {
+                            res.status(400).json({status: "No data for region", kgCO2PerKWh: null});
+                            return;
+                        }
                         res.status(200).json({status: "Success", kgCO2PerKWh: data.co2e});
                     });
             }
