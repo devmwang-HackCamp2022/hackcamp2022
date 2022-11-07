@@ -9,7 +9,11 @@ import MakeBox from "./make_box";
 import ModelBox from "./model_box";
 import VehicleBox from "./vehicle_box";
 
-export default function Settings() {
+export default function Settings({
+    saveAndCloseModal,
+}: {
+    saveAndCloseModal: () => void;
+}) {
     const [cookies, setCookie] = useCookies();
 
     const [step, setStep] = useState(0);
@@ -89,6 +93,14 @@ export default function Settings() {
             <p className="text-sm text-gray-500">
                 {"Setup complete! You can change your settings at any time."}
             </p>
+
+            <button
+                type="button"
+                onClick={saveAndCloseModal}
+                className="rounded-md m-0 mt-2 bg-dark px-4 py-2 text-white hover:bg-opacity-70 focus:outline-none active:bg-opacity-40"
+            >
+                Finish
+            </button>
         </div>,
     ];
 
