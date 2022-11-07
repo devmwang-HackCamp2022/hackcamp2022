@@ -52,9 +52,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
     })
         .then(response => response.json())
         .then(data => {
-            res.status(200).json({"status": "Success", "vehicles": data.menuItem.map((item: {text: string, value: number}) => ({
-                    [item.text]: Number.parseInt(String(item.value))
-            }))})
+            res.status(200).json({"status": "Success", "vehicles": data.menuItem})
         }
     );
 }
