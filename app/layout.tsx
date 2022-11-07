@@ -1,5 +1,6 @@
 import "@styles/globals.css";
 
+import { AnalyticsWrapper } from "@app/analytics";
 import Navbar from "@app/navbar";
 
 export default function RootLayout({
@@ -15,6 +16,8 @@ export default function RootLayout({
                 <Navbar />
 
                 {children}
+
+                <AnalyticsWrapper />
             </body>
         </html>
     );
