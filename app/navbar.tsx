@@ -22,11 +22,11 @@ export default function Navbar() {
 
                 <div className="block w-auto">
                     <Link
-                        href="/app"
+                        href="/"
                         className="block py-3 px-4 bg-accent rounded text-white"
                         aria-current="page"
                     >
-                        Launch App
+                        Help
                     </Link>
                 </div>
             </div>
