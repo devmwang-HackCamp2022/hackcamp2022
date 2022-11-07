@@ -37,7 +37,7 @@ export default function App() {
         setTriggerReload(false);
 
         fetch(
-            `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/electricalEmissionRate?region=${cookies.location}`
+            `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/electricalEmissionRate?region=${cookies.location}`
         )
             .then((res) => res.json())
             .then((data) => {
@@ -46,7 +46,7 @@ export default function App() {
             });
 
         fetch(
-            `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/vehicleEmissionRate?vehicleId=${cookies.vehicleId}`
+            `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/vehicleEmissionRate?vehicleId=${cookies.vehicleId}`
         )
             .then((res) => res.json())
             .then((data) => {

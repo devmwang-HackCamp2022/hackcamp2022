@@ -19,7 +19,7 @@ export default function LocationBox({
 
     useEffect(() => {
         fetch(
-            `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/electricityRegions`
+            `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/electricityRegions`
         )
             .then((res) => res.json())
             .then((data) => {

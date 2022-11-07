@@ -25,7 +25,7 @@ export default function ModelBox({
 
     useEffect(() => {
         fetch(
-            `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/vehicles?year=${year}&make=${make}&model=${model}`
+            `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/vehicles?year=${year}&make=${make}&model=${model}`
         )
             .then((res) => res.json())
             .then((data) => {

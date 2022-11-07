@@ -21,7 +21,7 @@ export default function MakeBox({
 
     useEffect(() => {
         fetch(
-            `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/makes?year=${year}`
+            `https://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/makes?year=${year}`
         )
             .then((res) => res.json())
             .then((data) => {
