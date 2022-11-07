@@ -14,7 +14,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
     }
 
     // check if the provided region is valid using our own api
-    fetch(`http://localhost:3000/api/get/electricityRegions`)
+    fetch(`https://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/electricityRegions`)
         .then(response => response.json())
         .then(data => {
             //@ts-ignore

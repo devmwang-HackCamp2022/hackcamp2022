@@ -18,7 +18,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
     }
 
     // check if the provided make is valid for the provided year using our own api
-    fetch(`http://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/makes?year=${req.query["year"]}`)
+    fetch(`https://${process.env.NEXT_PUBLIC_BASE_URL}/api/get/makes?year=${req.query["year"]}`)
         .then(response => response.json())
         .then(data => {
             if (!data.makes.includes(req.query["make"])) {
