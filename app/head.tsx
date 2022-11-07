@@ -8,7 +8,7 @@ export default function Head() {
             />
             <meta
                 name="description"
-                content="Project created for nwPlus HackCamp 2022."
+                content="Carbon Inspector Project - Created for nwPlus HackCamp 2022."
             />
 
             <link rel="icon" href="/favicon.ico" />
