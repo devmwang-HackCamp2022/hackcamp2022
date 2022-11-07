@@ -89,17 +89,32 @@ export default function App() {
                                 <h1 className="text-2xl inline-block">
                                     Electrical CO<sub>2</sub> Emission Rate
                                 </h1>
-                                <h1 className="text-xl inline-block float-right">
-                                    {`${kgPerKWh}`} kg CO<sub>2</sub> per kWh
-                                </h1>
+                                {!!kgPerKWh && (
+                                    <h1 className="text-xl inline-block float-right">
+                                        {`${kgPerKWh}`} kg CO<sub>2</sub> per
+                                        kWh
+                                    </h1>
+                                )}
+                                {!kgPerKWh && (
+                                    <h1 className="text-xl inline-block float-right">
+                                        N/A kg CO<sub>2</sub> per kWh
+                                    </h1>
+                                )}
                             </div>
                             <div className="py-2 text-white">
                                 <h1 className="text-2xl inline-block">
                                     Vehicle CO<sub>2</sub> Emission Rate
                                 </h1>
-                                <h1 className="text-xl inline-block float-right">
-                                    {`${kgPerKm}`} kg CO<sub>2</sub> per km
-                                </h1>
+                                {!!kgPerKm && (
+                                    <h1 className="text-xl inline-block float-right">
+                                        {`${kgPerKm}`} kg CO<sub>2</sub> per km
+                                    </h1>
+                                )}
+                                {!kgPerKm && (
+                                    <h1 className="text-xl inline-block float-right">
+                                        N/A kg CO<sub>2</sub> per km
+                                    </h1>
+                                )}
                             </div>
                         </div>
                     </div>
