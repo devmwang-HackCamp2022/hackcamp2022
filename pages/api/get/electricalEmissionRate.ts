@@ -18,7 +18,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
         .then(response => response.json())
         .then(data => {
             //@ts-ignore
-            const locationCodes = data.validRegions.map(i => Object.values(i));
+            const locationCodes = data.validRegions.map(i => String(Object.values(i)));
             if (!locationCodes.includes(req.query["region"])) {
                 res.status(400).json({status: "Invalid region", kgCO2PerKWh: null});
             } else {
