@@ -1,15 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 
+import LocationBox from "./location_box";
 import YearBox from "./year_box";
 import MakeBox from "./make_box";
 import ModelBox from "./model_box";
 import VehicleBox from "./vehicle_box";
 
 export default function Settings() {
+    const [cookies, setCookie] = useCookies();
+
     const [step, setStep] = useState(0);
 
+    const [selectedLocation, setSelectedLocation] = useState("");
     const [selectedYear, setSelectedYear] = useState("");
     const [selectedMake, setSelectedMake] = useState("");
     const [selectedModel, setSelectedModel] = useState("");
@@ -19,7 +24,25 @@ export default function Settings() {
         setStep((step) => step + 1);
     };
 
+    useEffect(() => {
+        if (step == 5) {
+            setCookie("location", (selectedLocation as any)["id"]);
+            setCookie("vehicleId", (selectedVehicle as any)["value"]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [step]);
+
     const componentList = [
+        <div key="locationSelection">
+            <p className="text-sm text-gray-500 pb-2">
+                {"Enter your current geographic location."}
+            </p>
+            <LocationBox
+                nextStep={nextStep}
+                state={selectedLocation}
+                setState={setSelectedLocation}
+            />
+        </div>,
         <div key="yearSelection">
             <p className="text-sm text-gray-500 pb-2">
                 {"Enter your car's model year."}
@@ -40,9 +63,7 @@ export default function Settings() {
             />
         </div>,
         <div key="modelSelection">
-            <p className="text-sm text-gray-500">
-                {"Enter your car's models."}
-            </p>
+            <p className="text-sm text-gray-500">{"Enter your car's model."}</p>
             <ModelBox
                 nextStep={nextStep}
                 year={selectedYear}
